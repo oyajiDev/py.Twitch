@@ -17,7 +17,7 @@ for cache_dir in glob.glob(os.path.join(__dirname, "py", "**", "__pycache__"), r
 setup(
     author = "oyajiDev", author_email = "this.dev.somehit@gmail.com", version = __version__,
     name = lib_name, description = "",
-    long_description = open(os.path.join(__dirname, "README.md"), "r", encoding = "utf-8").read().strip(),
+    # long_description = open(os.path.join(__dirname, "README.md"), "r", encoding = "utf-8").read().strip(),
     url = f"https://github.com/oyajiDev/{lib_name}",
     # pip informations
     python_requires = ">=3.9",
