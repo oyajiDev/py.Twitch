@@ -4,7 +4,7 @@ from typing import Optional, List
 
 
 class Helix:
-    def __init__(self, app_id:str, app_secret:str, user_token:str = None, scopes:Optional[List[str]] = [ "user:read:follows", "user:read:email" ]):
+    def __init__(self, app_id:str, app_secret:str = None, user_token:str = None, scopes:Optional[List[str]] = [ "user:read:follows", "user:read:email" ]):
         scopes_encoded = "+".join([ parse.quote(scope) for scope in scopes ])
 
         if not user_token:
