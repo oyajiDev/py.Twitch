@@ -30,18 +30,19 @@ class UserRequest(RequestBase):
                 return users[0]
 
     def get_users(self, id:Optional[List[str]] = None, login:Optional[List[str]] = None) -> List[UserItem]:
-        url = f"{base_url}/users"
+        params = {}
         if id:
-            id_to_url = "&id=".join(id)
-            url += f"?id={id_to_url}"
+            if len(id) > 100:
+                print("`id` is too long! upto 100 id are used!")
+
+            params["id"] = id[:100]
         if login:
-            login_to_url = "&login=".join(login)
-            if url.endswith("/users"):
-                url += f"?login={login_to_url}"
-            else:
-                url += f"&login={login_to_url}"
+            if len(login) > 100:
+                print("`login` is too long! upto 100 id are used!")
+
+            params["login"] = login[:100]
         
-        resp = requests.get(url, headers = self.request_header).json()
+        resp = requests.get(f"{base_url}/users", params = params, headers = self.request_header).json()
         return [
             UserItem.from_data(data)
             for data in resp.pop("data", [])

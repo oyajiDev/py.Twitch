@@ -12,6 +12,12 @@ api = Helix(
 )
 user_id = api.users.get_user(login = "30_old_man_dev").id
 
+all_followed_users = api.users.get_users([
+    channel.broadcaster_id
+    for channel in api.channels.get_all_followed_channels(user_id)
+])
+# print(all_followed_users)
+
 # ## analytics
 # extension_analytics = api.analytics.get_extension_analytics()
 # print(extension_analytics)
