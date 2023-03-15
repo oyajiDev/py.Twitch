@@ -10,7 +10,7 @@ lib_name = "py.Twitch"
 with open(os.path.join(__dirname, "requirements.txt"), "r", encoding = "utf-8") as reqr:
     requires = reqr.read().strip().split("\n")
 
-for cache_dir in glob(os.path.join(__dirname, "py", "**", "__pycache__"), recursive = True):
+for cache_dir in glob.glob(os.path.join(__dirname, "py", "**", "__pycache__"), recursive = True):
     shutil.rmtree(cache_dir)
 
 
