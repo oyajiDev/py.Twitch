@@ -1,0 +1,6 @@
+.vscode
+env
+requirements.dev.txt
+
+__pycache__
+._*
