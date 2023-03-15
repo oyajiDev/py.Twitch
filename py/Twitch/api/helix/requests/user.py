@@ -33,13 +33,13 @@ class UserRequest(RequestBase):
         url = f"{base_url}/users"
         if id:
             id_to_url = "&id=".join(id)
-            url += f"?{id_to_url[1:]}"
+            url += f"?id={id_to_url}"
         if login:
             login_to_url = "&login=".join(login)
             if url.endswith("/users"):
-                url += f"?{login_to_url[1:]}"
+                url += f"?login={login_to_url}"
             else:
-                url += login_to_url
+                url += f"&login={login_to_url}"
         
         resp = requests.get(url, headers = self.request_header).json()
         return [

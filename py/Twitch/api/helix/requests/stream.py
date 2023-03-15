@@ -33,13 +33,13 @@ class StreamRequest(RequestBase):
         url = f"{base_url}/streams"
         if user_id:
             user_id_to_url = "&user_id=".join(user_id)
-            url += f"?{user_id_to_url[1:]}"
+            url += f"?user_id={user_id_to_url}"
         if user_login:
             user_login_to_url = "&user_login=".join(user_login)
             if url.endswith("/streams"):
-                url += f"?{user_login_to_url[1:]}"
+                url += f"?user_login={user_login_to_url}"
             else:
-                url += user_login_to_url
+                url += f"&user_login={user_login_to_url}"
 
         params = {}
         if game_id:
