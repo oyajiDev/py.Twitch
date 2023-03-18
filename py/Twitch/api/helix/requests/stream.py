@@ -55,3 +55,12 @@ class StreamRequest(RequestBase):
             params["after"] = after
 
         return StreamsResult.from_result(requests.get(f"{base_url}/streams", params = params, headers = self.request_header).json())
+
+    def get_followed_streams(self, user_id:str, first:Optional[int] = 100, after:Optional[str] = None):
+        params = { "user_id": user_id }
+        if first:
+            params["first"] = first
+        if after:
+            params["after"] = after
+
+        return StreamsResult.from_result(requests.get(f"{base_url}/streams/followed", params = params, headers = self.request_header).json())

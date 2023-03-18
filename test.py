@@ -12,12 +12,6 @@ api = Helix(
 )
 user_id = api.users.get_user(login = "30_old_man_dev").id
 
-all_followed_users = api.users.get_users([
-    channel.broadcaster_id
-    for channel in api.channels.get_all_followed_channels(user_id)
-])
-# print(all_followed_users)
-
 # ## analytics
 # extension_analytics = api.analytics.get_extension_analytics()
 # print(extension_analytics)
@@ -31,10 +25,15 @@ all_followed_users = api.users.get_users([
 # print(all_followed_channels)
 
 # ## streams
+# # get stream(single)
 # stream = api.streams.get_stream(user_id)
 # print(stream)
+# # get streams(multiple)
 # streams = api.streams.get_streams()
 # print(streams)
+# # followed streams
+# followed_streams = api.streams.get_followed_streams(user_id)
+# print(followed_streams)
 
 # ## users
 # # get users(multiple)
@@ -42,6 +41,12 @@ all_followed_users = api.users.get_users([
 # print(users)
 # # get user(single)
 # user = api.users.get_user(login = "30_old_man_dev")
+# # get users(all)
+# all_followed_users = api.users.get_users([
+#     channel.broadcaster_id
+#     for channel in api.channels.get_all_followed_channels(user_id)
+# ])
+# print(all_followed_users)
 # print(user)
 # # get banned users
 # banned_users = api.users.get_banned_users(broadcaster_id = "30_old_man_dev")
